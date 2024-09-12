@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/common/const/colors.dart';
@@ -26,10 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
     final dio = Dio();
 
-    final emulatorIp = '172.16.30.170:3000'; // android
-    final simulatorIp = '127.0.0.1:3000'; // ios simulator
-
-    final ip = Platform.isIOS ? simulatorIp : emulatorIp;
 
     return DefaultLayout(
       child: SingleChildScrollView(
@@ -108,17 +102,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextButton(
                   onPressed: () async {
-                    final refreshToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RAY29kZWZhY3RvcnkuYWkiLCJzdWIiOiJmNTViMzJkMi00ZDY4LTRjMWUtYTNjYS1kYTlkN2QwZDkyZTUiLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTcyNTYwNzk0NiwiZXhwIjoxNzI1Njk0MzQ2fQ.eY0sQjkNZKlYj44pL6XpZjh0outYeCk4imp_wk5XsaI';
-
-                    final response = await dio.post(
-                      'http://$ip/auth/token',
-                      options: Options(
-                          headers: {
-                            'authorization': 'Bearer $refreshToken',
-                          }
-                      ),
-                    );
-
 
                   },
                   style: TextButton.styleFrom(
