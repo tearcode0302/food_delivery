@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/restaurant/component/restaurant_card.dart';
+import 'package:food_delivery/restaurant/view/restaurant_detail_screen.dart';
 
 import '../../common/const/data.dart';
 import '../model/restaurant_model.dart';
@@ -63,8 +64,15 @@ class RestaurantScreen extends StatelessWidget {
                   //   deliveryFee: item['deliveryFee'],
                   // );
 
-                  return RestaurantCard.fromModel(
-                    model: pItem
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => RestaurantDetailScreen(),
+                        ),
+                      );
+                    },
+                    child: RestaurantCard.fromModel(model: pItem),
                   );
                 },
                 separatorBuilder: (_, index) {
